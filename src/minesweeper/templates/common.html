@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Hello, World!{% endblock %}
+
+{% block js %}
+    {% assets 'js_all' %}
+        <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+{% endblock %}
+
+{% block css %}
+    {% assets 'css_all' %}
+        <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}" media="all"/>
+    {% endassets %}
+{% endblock %}
+
+{% block body %}
+{% endblock %}

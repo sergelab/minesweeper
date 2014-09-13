@@ -1,0 +1,54 @@
+{% extends 'common.html' %}
+
+{% block body %}
+    <nav class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#game_menu">
+                    <span class="sr-only">{{ _('Toggle navigation') }}</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <span class="navbar-brand">Minesweeper</span>
+            </div>
+            <div class="collapse navbar-collapse" id="game_menu">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ _('Game') }} <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{ url_for('.new_game') }}">{{ _('New') }}</a></li>
+                            <li class="divider"></li>
+                            <li><a href="{{ url_for('.new_game', level='beginner') }}">{{ set_mark('beginner', level) }}{{ _('Beginner') }}</a></li>
+                            <li><a href="{{ url_for('.new_game', level='intermediate') }}">{{ set_mark('intermediate', level) }}{{ _('Intermediate') }}</a></li>
+                            <li><a href="{{ url_for('.new_game', level='expert') }}">{{ set_mark('expert', level) }}{{ _('Expert') }}</a></li>
+                            {# <li><a href="#">{{ _('Custom...') }}</a></li> #}
+                            <li class="divider"></li>
+                            <li><a href="#">{{ _('Best Times...') }}</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div style="margin-left: 10px">
+    <table>
+        {% for y in game_field %}
+            <tr>
+                {% for x in y %}
+                    <td><a href="" class="btn btn-sm btn-default">{{ x|safe }}</a></td>                    
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+    </div>
+{% endblock %}
+
+{% macro set_mark(value1, value2) %}
+    {% if value1 == value2 %}
+        <span>✓</span>&nbsp;
+    {% else %}
+        <span></span>&nbsp;
+    {% endif %}
+{% endmacro %}

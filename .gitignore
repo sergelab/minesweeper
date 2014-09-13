@@ -1,0 +1,13 @@
+
+*.pyc
+.DS_Store
+.installed.cfg
+bin/
+develop-eggs/
+eggs/
+src/minesweeper.egg-info/
+src/tmp/
+src/minesweeper/config/development.cfg
+src/public
+src/*/final/*
+logs
